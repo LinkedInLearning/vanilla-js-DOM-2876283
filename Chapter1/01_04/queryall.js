@@ -15,6 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return false;
     });
 
+    document.forms.queryall.addEventListener('click', (e) => {
+        if (e.target.tagName != 'BUTTON') {
+            return;
+        }
+
+        switch (e.target.innerText) {
+            case 'delete': {
+                deleteMatches();
+            } break;
+
+            case 'textify': {
+                textifyMatches();
+            } break;
+        }
+    });
+
     refreshOutput(textarea.value);
 });
 
@@ -36,4 +52,29 @@ function refreshQuery(selector) {
 
         matches.appendChild(li);
     });
+}
+
+function deleteMatches() {
+    const output = document.querySelector('#output');
+
+    const selector = document.forms.queryall.selector.value;
+
+    output.querySelectorAll(selector).forEach((el) => {
+        el.parentElement.removeChild(el);
+    });
+
+    refreshQuery(selector);
+}
+
+function textifyMatches() {
+    const output = document.querySelector('#output');
+
+    const selector = document.forms.queryall.selector.value;
+
+    output.querySelectorAll(selector).forEach((el) => {
+        const text = document.createTextNode(el.innerText);
+        el.parentElement.replaceChild(text, el);
+    });
+
+    refreshQuery(selector);
 }
