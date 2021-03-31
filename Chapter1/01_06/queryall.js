@@ -44,6 +44,10 @@ function refreshQuery(selector) {
     const output = document.querySelector('#output');
     const matches = document.querySelector('#matches');
 
+    document.querySelectorAll('.match').forEach((el) => {
+        el.classList.remove('match');
+    });
+
     matches.innerHTML = '';
 
     output.querySelectorAll(selector).forEach((el) => {
@@ -51,6 +55,8 @@ function refreshQuery(selector) {
         li.innerText = el.outerHTML;
 
         matches.appendChild(li);
+
+        el.classList.add('match');
     });
 }
 

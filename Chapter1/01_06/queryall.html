@@ -21,6 +21,11 @@
         #matches li {
             font-family: monospace;
         }
+
+        .match {
+            background: gold;
+            padding: 1pt;
+        }
     </style>
 </head>
 <body>
@@ -34,9 +39,11 @@
                 <button type="button">delete</button>
                 <button type="button">textify</button>
             </form>
-            <label>Matches</label>
-            <ul id="matches">
-            </ul>
+            <details>
+                <summary><label>Matches</label></summary>
+                <ul id="matches">
+                </ul>
+            </details>
         </section>
         <section id="input">
             <label>HTML Source</label>
