@@ -1,0 +1,50 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>QueryAll</title>
+    <meta name="description" content="querySelectorAll() Demo">
+    <meta name="author" content="Scott Means for LinkedIn Learning">
+
+    <style>
+        textarea[name=source]:focus {
+            min-height: 10em;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #matches li {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>QueryAll - querySelectorAll() Demo</h1>
+    </header>
+    <main>
+        <section id="query">
+            <form name="queryall">
+                <pre>querySelectorAll('<input name="selector"/>'); <button type="submit">run</button></pre>
+                <button type="button">delete</button>
+                <button type="button">textify</button>
+            </form>
+            <label>Matches</label>
+            <ul id="matches">
+            </ul>
+        </section>
+        <section id="input">
+            <label>HTML Source</label>
+            <textarea name="source"></textarea>
+        </section>
+        <section id="output">
+        </section>
+    </main>
+    <script src="queryall.js"></script>
+</body>
+</html>
