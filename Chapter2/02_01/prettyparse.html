@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>HTML Pretty Printer</title>
+    <meta name="description" content="HTML Pretty Printer">
+    <meta name="author" content="Scott Means for LinkedIn Learning">
+
+    <style>
+        textarea[name=source] {
+            min-height: 10em;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTML Pretty Printer</h1>
+    </header>
+    <main>
+        <section id="input">
+            <label>HTML Source</label>
+            <textarea name="source"></textarea>
+        </section>
+        <section id="output">
+            <label>Pretty Output</label>
+            <pp-output>
+            </pp-output>
+        </section>
+    </main>
+    <script src="prettyparse.js"></script>
+</body>
+</html>
