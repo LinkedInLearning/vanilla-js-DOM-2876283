@@ -88,6 +88,25 @@ function prettyParse(html) {
         return document.createComment(commentText);
     }
 
+    function parseElement() {
+        const tagName = lexer.readIdentifier();
+        const element = document.createElement(tagName);
+
+        // !!!TBD!!! parse attributes
+        console.log(lexer.readUntil((lexer) => lexer.match(/\/?>/)));
+
+        if (lexer.consumeMatch('>')) {
+            element.appendChild(parseContent());
+
+            lexer.consumeMatch('</');
+            lexer.readUntil((lexer) => lexer.consumeMatch('>'));
+        } else {
+            lexer.consumeMatch('/>');
+        }
+
+        return element;
+    }
+
     function parseContent() {
         let text = '';
         const fragment = document.createDocumentFragment();
@@ -99,10 +118,13 @@ function prettyParse(html) {
             }
         }
 
-        while (!lexer.eof) {
+        while (!lexer.eof && !lexer.match('</')) {
             if (lexer.consumeMatch('<!--')) {
                 flushText();
                 fragment.appendChild(parseComment());
+            } else if (lexer.consumeMatch('<')) {
+                flushText();
+                fragment.appendChild(parseElement());
             } else {
                 text += lexer.read();
             }
