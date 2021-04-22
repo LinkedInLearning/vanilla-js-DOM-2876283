@@ -233,6 +233,13 @@ function prettyPrint(node) {
 
             return attribute;
         }
+
+        case Node.TEXT_NODE: {
+            const text = document.createElement('pp-text');
+            text.innerText = node.nodeValue;
+
+            return text;
+        }
     }
 
     return node.cloneNode(true);

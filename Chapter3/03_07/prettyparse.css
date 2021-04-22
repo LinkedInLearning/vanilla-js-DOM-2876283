@@ -49,3 +49,7 @@ pp-attrvalue::before {
 pp-attrvalue::after {
     content: '"';
 }
+
+pp-text {
+    color: #000;
+}
