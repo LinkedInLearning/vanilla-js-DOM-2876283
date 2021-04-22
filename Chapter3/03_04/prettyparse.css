@@ -1,0 +1,11 @@
+pp-comment {
+    color: #888;
+}
+
+pp-comment::before {
+    content: "<!--";
+}
+
+pp-comment::after {
+    content: "-->";
+}
