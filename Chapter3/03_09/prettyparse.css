@@ -30,6 +30,10 @@ pp-opentag::after, pp-closetag::after {
     content: ">";
 }
 
+pp-opentag.empty::after {
+    content: "/>";
+}
+
 pp-tagname {
     color: #0c98ea;
 }
