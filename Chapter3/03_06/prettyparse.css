@@ -33,3 +33,19 @@ pp-opentag::after, pp-closetag::after {
 pp-tagname {
     color: #0c98ea;
 }
+
+pp-attrname {
+    color: #ca6836;
+}
+
+pp-attribute::before {
+    content: " ";
+}
+
+pp-attrvalue::before {
+    content: '="';
+}
+
+pp-attrvalue::after {
+    content: '"';
+}
