@@ -14,7 +14,7 @@ function refreshOutput(html) {
     const output = document.querySelector('pp-output');
 
     output.innerText = '';
-    output.appendChild(prettyParse(html));
+    output.appendChild(prettyPrint(prettyParse(html)));
 }
 
 class Lexer {
@@ -167,4 +167,24 @@ function prettyParse(html) {
     }
 
     return parseContent();
+}
+
+function prettyPrint(node) {
+    function printChildNodes(node) {
+        const fragment = document.createDocumentFragment();
+
+        node.childNodes.forEach((child) => {
+            fragment.appendChild(prettyPrint(child));
+        });
+
+        return fragment;
+    }
+
+    switch (node.nodeType) {
+        case Node.DOCUMENT_FRAGMENT_NODE: {
+            return printChildNodes(node);
+        }
+    }
+
+    return node.cloneNode(true);
 }
