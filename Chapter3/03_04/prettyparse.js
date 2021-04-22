@@ -181,6 +181,13 @@ function prettyPrint(node) {
     }
 
     switch (node.nodeType) {
+        case Node.COMMENT_NODE: {
+            const comment = document.createElement('pp-comment');
+            comment.innerText = node.nodeValue;
+
+            return comment;
+        }
+
         case Node.DOCUMENT_FRAGMENT_NODE: {
             return printChildNodes(node);
         }
