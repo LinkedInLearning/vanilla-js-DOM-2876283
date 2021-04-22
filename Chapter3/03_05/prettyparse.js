@@ -191,6 +191,30 @@ function prettyPrint(node) {
         case Node.DOCUMENT_FRAGMENT_NODE: {
             return printChildNodes(node);
         }
+
+        case Node.ELEMENT_NODE: {
+            const element = document.createElement('pp-element');
+
+            const openTag = document.createElement('pp-opentag');
+
+            const tagName = document.createElement('pp-tagname');
+            tagName.innerText = node.nodeName.toLowerCase();
+            openTag.appendChild(tagName);
+
+            // !!!TBD!!! process element attributes
+
+            element.appendChild(openTag);
+
+            if (node.hasChildNodes()) {
+                element.appendChild(printChildNodes(node));
+            }
+
+            const closeTag = document.createElement('pp-closetag');
+            closeTag.appendChild(tagName.cloneNode(true));
+            element.appendChild(closeTag);
+
+            return element;
+        }
     }
 
     return node.cloneNode(true);
